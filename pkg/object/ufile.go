@@ -45,12 +45,13 @@ func (u *ufile) String() string {
 	return fmt.Sprintf("ufile://%s/", uri.Host)
 }
 
+var UFILE_HEADER_NAMES = []string{"Content-MD5", "Content-Type", "Date"}
 func ufileSigner(req *http.Request, accessKey, secretKey, signName string) {
 	if accessKey == "" {
 		return
 	}
 	toSign := req.Method + "\n"
-	for _, n := range HEADER_NAMES {
+	for _, n := range UFILE_HEADER_NAMES {
 		toSign += req.Header.Get(n) + "\n"
 	}
 	bucket := strings.Split(req.URL.Host, ".")[0]

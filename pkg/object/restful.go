@@ -103,7 +103,7 @@ func (s *RestfulStorage) String() string {
 	return s.endpoint
 }
 
-var HEADER_NAMES = []string{"Content-MD5", "Content-Type", "Date"}
+
 
 func (s *RestfulStorage) request(method, key string, body io.Reader, headers map[string]string) (*http.Response, error) {
 	uri := s.endpoint + "/" + key
